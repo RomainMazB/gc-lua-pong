@@ -2,9 +2,9 @@
 Pong game by Romain 'Maz' BILLOIR
 
 ## Controls
-Pong is a two-players game
 ### Pads moves
 Player1 controls the left pad, he uses the `Z` button to move up and `S` button to move down
+
 Player2 controls the right pad, he uses the `up` button to move up and `down` button to move down
 
 ### Start the game
