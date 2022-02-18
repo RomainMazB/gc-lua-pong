@@ -29,5 +29,5 @@ To increase the pads size: press `H + up or down button`
 To increase the pads' speed: press `P + up or down button`
 ### Ball's initial speed - min: 50 / max 350
 To increase the ball's initial speed height: press `B + up or down button`
-### Ball speed increase on pads collision - min: 8 / max 20
+### Ball speed increase on pads collision - min: 5 / max 20
 To increase the speed increase of the ball on pads collisions: press `S + up or down button`

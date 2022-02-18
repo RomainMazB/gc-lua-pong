@@ -235,18 +235,15 @@ function love.keypressed(key)
             if key == "up" then
                 initialBallSpeed = math.min(maxBallSpeed, initialBallSpeed + 10)
             elseif key == "down" then
-                initialPadHeight = math.max(minBallSpeed, initialPadHeight - 10)
+                initialBallSpeed = math.max(minBallSpeed, initialBallSpeed - 10)
             end
-
-            pad1.height = initialPadHeight
-            pad2.height = initialPadHeight
 
         -- Press S + a number on the keypad to increase speed increase on pads collisions
         elseif love.keyboard.isDown("s") then
             if key == "up" then
-                initialBallSpeed = math.min(maxBallSpeedIncrease, ballSpeedIncrease + 1)
+                ballSpeedIncrease = math.min(maxBallSpeedIncrease, ballSpeedIncrease + 1)
             elseif key == "down" then
-                initialPadHeight = math.max(minBallSpeedIncrease, ballSpeedIncrease - 1)
+                ballSpeedIncrease = math.max(minBallSpeedIncrease, ballSpeedIncrease - 1)
             end
         end
     end
