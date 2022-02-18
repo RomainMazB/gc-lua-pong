@@ -8,7 +8,8 @@ Player1 controls the left pad, he uses the `Z` button to move up and `S` button 
 Player2 controls the right pad, he uses the `up` button to move up and `down` button to move down
 
 ### Start the game
-On launch, the game will be waiting for the first launch.  
+On launch, the game will be waiting for the first start. To begin the game, just press `space`  
+Before doing that, you may consider to modify some settings to make it more fun!  
 You can modify the game settings such as:
 - the pads height
 - the pads speed
@@ -19,7 +20,7 @@ You can modify the game settings such as:
 To pause the game when it started, just press `space`
 
 ### Exit the game
-To exit the game, just press `exit` :)
+To exit the game, just press `escape` :)
 
 ## Settings
 Game settings can only be modified before the game start.
