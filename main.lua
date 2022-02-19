@@ -97,6 +97,9 @@ function love.draw()
         love.graphics.print("Ball speed increase on pads collision: "..ballSpeedIncrease, screenSize.centerX, 40)
         love.graphics.print("Initial pads size: "..initialPadHeight, screenSize.centerX, 55)
         love.graphics.print("Initial pads speed: "..initialPadSpeed, screenSize.centerX, 70)
+
+        local ballCollisionsState = gameState.options.horizontalCollisions and "On" or "Off";
+        love.graphics.print("Horizontal collisions: "..ballCollisionsState, screenSize.centerX, 85)
     elseif gameState.gameIsPaused then
         love.graphics.print("Game is paused, press 'space' to continue")
     end
@@ -131,6 +134,10 @@ function DetectCollisions()
     if ball.y < 0 or ball.y + ball.size > screenSize.height then
         if gameState.options.horizontalCollisions then
             ball.vy = - ball.vy
+        elseif ball.y + ball.size > screenSize.height then
+            ball.y = 0
+        else
+            ball.y = screenSize.height - ball.size
         end
     end
 
@@ -206,9 +213,8 @@ function love.keypressed(key)
         love.event.quit()
 
     -- Settings can only be changed before the game start
-    -- all the settings are handled by the numpad + keyboard pressure
     elseif not gameState.gameIsRunning then
-        -- Press H + a number on the keypad to increase the pads size
+        -- Press H + up/down to increase the pads size
         if love.keyboard.isDown("h") then
             if key == "up" then
                 initialPadHeight = math.min(maxPadHeight, initialPadHeight + 10)
@@ -219,7 +225,7 @@ function love.keypressed(key)
             pad1.height = initialPadHeight
             pad2.height = initialPadHeight
 
-        -- Press P + a number on the keypad to increase the pads speed
+        -- Press P + up/down to increase the pads speed
         elseif love.keyboard.isDown("p") then
             if key == "up" then
                 initialPadSpeed = math.min(maxPadSpeed, initialPadSpeed + 10)
@@ -230,7 +236,7 @@ function love.keypressed(key)
             pad1.speed = initialPadSpeed
             pad2.speed = initialPadSpeed
 
-        -- Press B + a number on the keypad to increase the ball first speed
+        -- Press B + up/down to increase the ball first speed
         elseif love.keyboard.isDown("b") then
             if key == "up" then
                 initialBallSpeed = math.min(maxBallSpeed, initialBallSpeed + 10)
@@ -238,12 +244,20 @@ function love.keypressed(key)
                 initialBallSpeed = math.max(minBallSpeed, initialBallSpeed - 10)
             end
 
-        -- Press S + a number on the keypad to increase speed increase on pads collisions
+        -- Press S + up/down to increase speed increase on pads collisions
         elseif love.keyboard.isDown("s") then
             if key == "up" then
                 ballSpeedIncrease = math.min(maxBallSpeedIncrease, ballSpeedIncrease + 1)
             elseif key == "down" then
                 ballSpeedIncrease = math.max(minBallSpeedIncrease, ballSpeedIncrease - 1)
+            end
+
+        -- Press C + up/down to activate/deactivate the horizontal screen borders collision
+        elseif love.keyboard.isDown("c") then
+            if key == "up" then
+                gameState.options.horizontalCollisions = true
+            elseif key == "down" then
+                gameState.options.horizontalCollisions = false
             end
         end
     end
