@@ -32,3 +32,5 @@ To increase the pads' speed: press `P + up or down button`
 To increase the ball's initial speed height: press `B + up or down button`
 ### Ball speed increase on pads collision - min: 5 / max 20
 To increase the speed increase of the ball on pads collisions: press `S + up or down button`
+### Activate/Deactivate horizontal screen borders ball collisions
+To activate/deactivate the ball collisions on top and bottom border of the screen: press `C + up or down button`
